@@ -18,8 +18,7 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 }
 
 export async function listBlockers(): Promise<Blocker[]> {
-  const response = await request<{ items?: Blocker[] }>('/blockers');
-  return response.items ?? [];
+  return request<Blocker[]>('/blockers');
 }
 
 export const getBlocker = (id: number) => request<Blocker>(`/blockers/${id}`);
